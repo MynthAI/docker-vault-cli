@@ -20,9 +20,11 @@ lint = ["isort", "black", "mypy", "flake"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
+vault-cli = "^3.1.0"
+
+[tool.poetry.group.build.dependencies]
 poethepoet = "^0.22.1"
 pyinstaller = "^5.13.2"
-vault-cli = "^3.1.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"

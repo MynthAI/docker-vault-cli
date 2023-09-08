@@ -7,7 +7,8 @@ RUN apt-get update -qq && \
     apt-get install -y binutils python3.11-dev
 USER monty
 COPY poetry.lock pyproject.toml /app/
-RUN install-poetry-app src
+RUN install-poetry-app src && \
+    poetry install --with=build
 
 # Build vault-cli
 COPY src /app/src
