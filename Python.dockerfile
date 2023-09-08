@@ -17,3 +17,4 @@ RUN mkdir -p dist/usr/local/bin && \
 # Create final image with vault-cli installed
 FROM quay.io/mynth/python:base
 COPY --from=builder /app/dist /
+COPY --from=builder /app/dist /dist
