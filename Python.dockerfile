@@ -5,6 +5,7 @@ COPY poetry.lock pyproject.toml /app/
 RUN install-poetry-app src
 
 # Save vault-cli file structure
+# hadolint ignore=DL3003
 RUN mkdir -p dist/usr/local/bin && \
     mkdir dist/usr/local/src && \
     cp -r .venv dist/usr/local/src/vault-cli && \
