@@ -8,7 +8,9 @@ packages = [{include = "src"}]
 [tool.poe.tasks]
 "build:vault-cli" = "pyinstaller src/vault-cli.py --name vault-cli --onefile"
 "build:docker" = "docker build -t quay.io/mynth/docker-vault-cli ."
+"build:docker-python" = "docker build -f Python.dockerfile -t quay.io/mynth/docker-vault-cli:python ."
 run = "docker run quay.io/mynth/docker-vault-cli vault-cli --help"
+"run:docker-python" = "docker run quay.io/mynth/docker-vault-cli:python vault-cli --help"
 isort = "isort ."
 "isort:check" = "isort -c ."
 black = "black ."
@@ -20,8 +22,6 @@ lint = ["isort", "black", "mypy", "flake"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
-poethepoet = "^0.22.1"
-pyinstaller = "^5.13.2"
 vault-cli = "^3.1.0"
 
 [tool.poetry.group.dev.dependencies]
@@ -29,6 +29,8 @@ black = "^23.7.0"
 flake8 = "^6.1.0"
 isort = "^5.12.0"
 mypy = "^1.5.1"
+poethepoet = "^0.22.1"
+pyinstaller = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]
