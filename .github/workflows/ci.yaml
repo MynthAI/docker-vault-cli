@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Install dependencies
+      run: |
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        poetry install --with=dev
+
+    - name: Check lint
+      run: poetry run poe lint:check
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Install dependencies
+      run: |
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        poetry install --with=dev
+
+    - name: Build Docker container
+      run: poe build:docker
+
+    - name: Verify build
+      run: poe run
