@@ -8,7 +8,7 @@ RUN apt-get update -qq && \
 USER monty
 COPY poetry.lock pyproject.toml /app/
 RUN install-poetry-app src && \
-    poetry install --with=build
+    poetry install --with=dev
 
 # Build vault-cli
 COPY src /app/src
