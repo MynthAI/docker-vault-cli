@@ -47,7 +47,7 @@ jobs:
         poetry install --with=dev
 
     - name: Build Docker container
-      run: poe build:docker
+      run: poetry run poe build:docker
 
     - name: Verify build
-      run: poe run
+      run: poetry run poe run
