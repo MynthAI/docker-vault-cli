@@ -1,0 +1,4 @@
+*.spec
+.mypy_cache
+build
+dist

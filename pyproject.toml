@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "docker-vault-cli"
+version = "1.0.0"
+description = "Bundled vault-cli executable"
+authors = ["Mynth"]
+packages = [{include = "src"}]
+
+[tool.poe.tasks]
+"build:vault-cli" = "pyinstaller src/vault-cli.py --name vault-cli --onefile"
+"build:docker" = "docker build -t quay.io/mynth/docker-vault-cli ."
+run = "docker run quay.io/mynth/docker-vault-cli vault-cli --help"
+isort = "isort ."
+"isort:check" = "isort -c ."
+black = "black ."
+"black:check" = "black --check ."
+mypy = "mypy ."
+flake = "flake8 ."
+lint = ["isort", "black", "mypy", "flake"]
+"lint:check" = ["isort:check", "black:check", "mypy", "flake"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+poethepoet = "^0.22.1"
+pyinstaller = "^5.13.2"
+vault-cli = "^3.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+flake8 = "^6.1.0"
+isort = "^5.12.0"
+mypy = "^1.5.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
