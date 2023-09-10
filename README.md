@@ -14,11 +14,9 @@ Two versions are available:
 
 ## Usage
 
-For the standalone version, use: `docker run
-quay.io/mynth/docker-vault-cli`.
+For the standalone version, use: `quay.io/mynth/docker-vault-cli`.
 
-For the Python version, use: `docker run
-quay.io/mynth/docker-vault-cli:python`.
+For the Python version, use: `quay.io/mynth/docker-vault-cli:python`.
 
 ## Installation
 
