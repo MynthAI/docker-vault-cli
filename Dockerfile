@@ -4,7 +4,7 @@ FROM quay.io/mynth/python:dev as builder
 USER root
 # hadolint ignore=DL3008,DL3015
 RUN apt-get update -qq && \
-    apt-get install -y binutils python3.11-dev
+    apt-get install -y binutils python3.12-dev
 USER monty
 COPY poetry.lock pyproject.toml /app/
 RUN install-poetry-app src && \
