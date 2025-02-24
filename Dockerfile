@@ -20,5 +20,5 @@ RUN mv dist/vault-cli /usr/local/bin/
 USER monty
 
 # Create final image with vault-cli binary
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 COPY --from=builder /usr/local/bin/vault-cli /usr/local/bin/vault-cli
