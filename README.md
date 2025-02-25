@@ -1,29 +1,17 @@
 # Docker vault-cli
 
-This repository contains Docker images for vault-cli, [a 12-factor
-oriented command line tool for Hashicorp
-Vault](https://vault-cli.readthedocs.io/en/latest/). The images are
-hosted on `quay.io/mynth/docker-vault-cli`.
-
-## Versions
-
-Two versions are available:
-
-1.  Standalone: Can be used in any container.
-2.  Python: Can be used in containers with Python installed.
+This repository contains a Linux-based Docker image for `vault-cli`, [a
+12-factor oriented command line tool for Hashicorp
+Vault](https://vault-cli.readthedocs.io/en/latest/). The image is hosted
+on `quay.io/mynth/docker-vault-cli`.
 
 ## Usage
 
-For the standalone version, use: `quay.io/mynth/docker-vault-cli`.
+`vault-cli` is available as a standalone binary in
+`quay.io/mynth/docker-vault-cli`.
 
-For the Python version, use: `quay.io/mynth/docker-vault-cli:python`.
+## Installation into Another Container
 
-## Installation
-
-For Python containers, add the following to your Dockerfile:
-
-    COPY --from=quay.io/mynth/docker-vault-cli:python /dist /
-
-For other containers, add:
+Add the following to your Dockerfile:
 
     COPY --from=quay.io/mynth/docker-vault-cli /usr/local/bin/vault-cli /usr/local/bin/vault-cli
