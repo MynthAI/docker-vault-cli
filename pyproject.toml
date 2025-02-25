@@ -8,9 +8,7 @@ packages = [{include = "src"}]
 [tool.poe.tasks]
 "build:vault-cli" = "pyinstaller src/vault-cli.py --name vault-cli --onefile"
 "build:docker" = "docker build -t quay.io/mynth/docker-vault-cli ."
-"build:docker-python" = "docker build -f Python.dockerfile -t quay.io/mynth/docker-vault-cli:python ."
 run = "docker run quay.io/mynth/docker-vault-cli vault-cli --help"
-"run:docker-python" = "docker run quay.io/mynth/docker-vault-cli:python vault-cli --help"
 isort = "isort ."
 "isort:check" = "isort -c ."
 black = "black ."
